@@ -2,10 +2,6 @@
 bix-blockchain
 ==============
 
-BIX blockchain software implements a version of blockchain
-database freely inspired by cryptocurrencies Bitcoin, Ethereum and
-Ripple.
-
 BIX blockchain software consists of two layers:
 
 - Layer0 (core) servers are servers responsible for the
