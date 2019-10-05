@@ -1,0 +1,78 @@
+
+Installation on Debian (based) Linuxes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+######################################################################
+1.)
+
+We will use aptitude package manager in the following text. To install
+it type:
+
+  sudo apt-get install aptitude
+
+######################################################################
+2.)
+
+Openssl development library must be installed before starting the
+software. To install it type:
+
+  sudo aptitude install libssl-dev
+
+######################################################################
+3.)
+
+we use killall command in our stop script. If not installed, get it with:
+
+  sudo aptitude install psmisc
+
+######################################################################
+4.)
+
+libcap2-bin package is required to bind wallet server to standard http
+ports 80 and 443. To install it type:
+
+  sudo aptitude install libcap2-bin
+
+######################################################################
+5.)
+
+haveged is a package to improve entropy of generated keys. It is
+recommended to install it with:
+
+  sudo aptitude install haveged
+
+######################################################################
+6.)
+
+To initialize bix-blockchain software goto bix-blockchain/src
+directory and type:
+
+  make install
+
+To compile executables type:
+
+  make all
+
+To run and watch debug output type:
+
+  make run
+
+After this you shall be able to use wallet GUI by browsing https://localhost
+and connect to the first core server by browsing https://localhost:55530/core.html
+
+Other usefull commands:
+
+#########
+
+To stop servers:
+
+  make stop
+
+To start servers:
+
+  make start
+
+To completely reset the installation:
+
+  make distclean install
+

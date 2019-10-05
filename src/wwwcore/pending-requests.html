@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Core - Pending Requests</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1" />
+        <script type='text/javascript' src='/jsvar.js'></script>
+        <script type='text/javascript' src='/jquery.js'></script>
+		<script type="text/javascript" src="/bchain.js"></script>
+		<style>
+			div {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+            box-sizing: border-box;
+			}
+            .buttonLink {
+				background:none;
+				border:none;
+				cursor:pointer;
+				color:blue;
+				text-decoration:underline;
+			}
+		</style>
+    </head>
+	<body class="boxsizingBorder">
+    <div style="float:left; width:30%; height:99%; border:1px solid black;text-align:center; padding:2%; overflow:auto;">
+		<span style="font-weight: bold; font-style: italic;">Pending Requests:</span>
+		<br>
+		<br>
+		<table id="requestsTable">
+		</table>
+    </div>
+    <div id="contentdiv" style="float:left; width:34%; height:99%; border:1px solid black; padding:2%; overflow:auto;">
+    <span style="font-weight: bold; font-style: italic;">Content:</span>
+    <br>
+	<span id=contentspan style="font-family:monospace; width:100%; height:100%;" >
+		<br>
+		<b>Request: <span class="view-requestid"></span></b>
+		<br>
+		<br>
+		<table>
+			<tr><td>First Name:</td><td><span class="view-firstName" ></span></td></tr>
+			<tr><td>Last Name: </td><td><span class="view-lastName" ></span></td></tr>
+			<tr><td>Email: </td><td><span class="view-email" ></span></td></tr>
+			<tr><td>Telephone: </td><td><span class="view-telephone" ></span></td></tr>
+			<tr><td valign=top>Address: </td><td ><div style="border:1px solid black;overflow:auto;resize:both;"><pre class="view-address"></pre></div></td></tr>
+			<tr><td>Country: </td><td><span class="view-country" ></span></td></tr>
+			<tr><td>Id card filename: </td><td><span class="view-idcardfname" ></span></td></tr>
+			<tr><td valign=top>Id card: </td><td ><div  class="view-idcard" style="width:200px;height:200px;border:1px solid black;overflow:auto;resize:both;"></div></td></tr>
+			<tr><td>Proof of addr filename: </td><td><span class="view-proofofaddressfname" ></span></td></tr>
+			<tr><td valign=top>Proof of address: </td><td ><div  class="view-proofofaddress" style="width:200px;height:200px;border:1px solid black;overflow:auto;resize:both;"></div></td></tr>
+		</table>
+	</span>
+
+   </div>
+    <div id="msgsdiv" style="float:left; width:35%; height:99%; border:1px solid black; padding:2%; overflow:auto;">
+    <span style="font-weight: bold; font-style: italic;">System Log:</span>
+    <br>
+    <span id=msgspan style="font-family:monospace; width:100%; height:100%;">
+    <span>
+    </div>
+	</body>
+</html>

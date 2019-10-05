@@ -1,0 +1,183 @@
+<html>
+    <head>
+        <title>Core</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1" />
+        <script type='text/javascript' src='/jsvar.js'></script>
+        <script type='text/javascript' src='/jquery.js'></script>
+		<script type="text/javascript" src="strathausen-dracula/dist/raphael-min.js"></script>
+		<script type="text/javascript" src="strathausen-dracula/dist/dracula_graffle.js"></script>
+		<script type="text/javascript" src="strathausen-dracula/dist/dracula_graph.js"></script>
+		<script type="text/javascript" src="/bchain.js"></script>
+		<style>
+			div {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+            box-sizing: border-box;
+			}
+		</style>
+    </head>
+	<body  class="boxsizingBorder">
+		<div style="float:left; width:50%; height:99%; border:1px solid black;text-align:center; overflow:auto;">
+			<div id=graph style="width:99%;height:40%;border:1px solid black;text-align:center;">
+			</div>
+			<div style="width:99%;height:59%;border:1px solid black;text-align:center;">
+				<form  action="javascript:void(0);">
+					<br>
+					<input readonly type=button onclick="drawGraph(this.form);" value="redraw graph" />
+					<br>
+					<hr>
+					<div id="routingPathDiv" style="width:100%;height:40%; overflow:auto;"></div>
+					<hr>
+					<div id="broadcastPathDiv" style="width:100%;height:10%; overflow:auto;"></div>
+					<hr>
+					<hr>
+					<input readonly type=button onclick="disconnectionTest(this.form);" value="Disconnection Test" />
+					<hr>
+					<a href="pending-requests.html">Review Pending Requests</a>
+					<hr>
+				</form>
+			</div>
+		</div>
+		<div id="msgsdiv" style="float:left; width:49%; height:99%; border:1px solid black; padding:2%; overflow:auto;">
+			<span style="font-weight: bold; font-style: italic;">System Log:</span>
+			<br>
+			<span id=msgspan style="font-family:monospace; width:100%; height:100%;">
+			</span>
+		</div>
+		
+		<script>
+
+		 graphRandomSeed = 0x2F6E2B1;
+
+		 function msgWrite(msg) {
+			 var ss = document.getElementById('msgspan');
+			 ss.innerText += msg;
+			 // scroll to bottom
+			 var objDiv = document.getElementById("msgsdiv");
+			 objDiv.scrollTop = objDiv.scrollHeight;
+		 }
+
+		 function nFormatter(num, digits) {
+			 var si = [
+				 { value: 1, symbol: "" },
+				 { value: 1E3, symbol: "K" },
+				 { value: 1E6, symbol: "M" },
+				 { value: 1E9, symbol: "G" },
+				 { value: 1E12, symbol: "T" },
+				 { value: 1E15, symbol: "P" },
+				 { value: 1E18, symbol: "E" }
+			 ];
+			 var i;
+			 for (i = si.length - 1; i > 0; i--) {
+				 if (num >= si[i].value) {
+					 break;
+				 }
+			 }
+			 return (num / si[i].value).toFixed(digits) + si[i].symbol;
+		 }
+
+		 function redrawGraph() {
+			 seed = graphRandomSeed;
+			 var gdiv = document.getElementById('graph');
+			 gdiv.innerHTML = "";
+			 var g = new Graph();
+			 var servermax = 0;
+			 for(var i=serverEdge.length-1; i>=0; i--) {
+				 if (serverEdge[i].a > servermax)  servermax = serverEdge[i].a;
+				 if (serverEdge[i].b > servermax)  servermax = serverEdge[i].b;
+			 }
+			 var nodeStatusColors = ["red", "LIGHTYELLOW", "GREENYELLOW", "LAVENDER", "TOMATO", "red"];
+			 var noderender = function(r, n) {
+				 var set = r.set().push(
+					 r.rect(n.point[0]-30, n.point[1]-25, 65, 60).attr({"fill": nodeStatusColors[nodeState[n.id].status], r : "12px", "stroke-width" : n.distance == 0 ? "3px" : "1px" }))
+							.push(r.text(n.point[0], n.point[1] + 5,
+ 										 " " + nodeState[n.id].name + "\n blk: "+nodeState[n.id].seqn + "\nused:"+nFormatter(nodeState[n.id].uspace, 0)+"B"
+							));
+				 return set;
+			 };
+			 for(var i=0; i<=servermax; i++) {
+				 g.addNode(''+i , { render:noderender, /*label: 'server '+i */});
+			 }
+			 for(var i=serverEdge.length-1; i>=0; i--) {
+				 var fill = "#56f";
+				 if (serverEdge[i].status == 1) fill = 'green';
+				 if (serverEdge[i].status == 2) fill = 'red';
+				 g.addEdge(''+serverEdge[i].a, ''+serverEdge[i].b, { directed : true, label: (serverEdge[i].latency/1000).toFixed(2)+" ms" , /* stroke : "#bfa"  , */ fill : fill /*, label : "Label"*/});
+			 }
+			 var layouter = new Graph.Layout.Spring(g);
+			 layouter.layout();
+			 var renderer = new Graph.Renderer.Raphael('graph', g, gdiv.clientWidth-5, gdiv.clientHeight-5);
+			 renderer.draw();
+		 }
+
+		 function drawGraph(form) {
+			 graphRandomSeed = seed;
+			 redrawGraph();
+		 }
+
+		 function disconnectionTest(form) {
+			 jsvar.setString('action', 
+							 'action=disconnectionTest'
+			 );
+		 }
+
+		 // hack. Overwrite random generator to get the same graph layout
+		 Math.random = (function() {
+			 seed = 0x2F6E2B1;
+			 return function() {
+				 // Robert Jenkins’ 32 bit integer hash function
+				 seed = ((seed + 0x7ED55D16) + (seed << 12))  & 0xFFFFFFFF;
+				 seed = ((seed ^ 0xC761C23C) ^ (seed >>> 19)) & 0xFFFFFFFF;
+				 seed = ((seed + 0x165667B1) + (seed << 5))   & 0xFFFFFFFF;
+				 seed = ((seed + 0xD3A2646C) ^ (seed << 9))   & 0xFFFFFFFF;
+				 seed = ((seed + 0xFD7046C5) + (seed << 3))   & 0xFFFFFFFF;
+				 seed = ((seed ^ 0xB55A4F09) ^ (seed >>> 16)) & 0xFFFFFFFF;
+				 return (seed & 0xFFFFFFF) / 0x10000000;
+			 };
+		 }());
+
+		 
+		 // setTimeout(function () {drawGraph();}, 2000);
+		 jsvar.variableUpdate["serverEdge~"] = function (i, v) {
+			 if (typeof nodeState == 'undefined') return;
+			 redrawGraph();
+		 };
+		 jsvar.variableUpdate["nodeState~"] = function (i, v) {
+			 if (typeof serverEdge == 'undefined') return;
+			 redrawGraph();		 
+		 };
+
+		 jsvar.variableUpdate["myNodeRoutingPaths~"] = function (i, v) {
+			 var n = myNodeRoutingPaths.length;
+			 var h = "";
+			 h += "<h2>Node "+myNode+"</h2>";
+			 h += "<b>Routing paths:</b><br>"
+			 h += "<table style='width:100%' ><tr>";
+			 h += "<td>Destination Node:</td>";
+			 for(var i=0; i<n; i++) {
+				 h += "<td>" + i + "</td>";
+			 }
+			 h += "</tr><tr>";
+			 h += "<td>Routing path (latency): </td>";
+			 for(var i=0; i<n; i++) {
+				 h += "<td>\"" + myNodeRoutingPaths[i].path + "\" ("+ (myNodeRoutingPaths[i].latency/1000).toFixed(2) + "ms) </td>";
+			 }
+			 h += "</tr></table>"
+			 var e = document.getElementById('routingPathDiv');
+			 e.innerHTML = h;
+		 };
+
+		 jsvar.variableUpdate["myNodeBroadcastPath"] = function (i, v) {
+			 myNodeBroadcastPaths = v;
+			 var e = document.getElementById('broadcastPathDiv');
+			 e.innerHTML = "<b>Broadcast path: </b> "+v;
+		 };
+		 // jsvar.debuglevel = 999;
+
+		 if(typeof jsvar==='undefined') {
+			 jsvar={};
+			 jsvar.connected=false;
+		 };
+		</script>
+	</body>
+</html>

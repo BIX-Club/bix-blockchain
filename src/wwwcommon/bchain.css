@@ -1,0 +1,56 @@
+
+body, html {
+	height: 100%;
+}
+.bg {
+}
+.bggray {
+	background-color: #eeeeee;
+}
+.bgwhite {
+	background-color: #ffffff;
+}
+.bgtransparent {
+	background-color: transparent;
+}
+.bs-example{
+    margin: 20px;
+}
+.vcenter {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.h100 {
+	height: 100%;			 
+}
+.buttonLink {
+	background:none;
+	border:none;
+	cursor:pointer;
+	color:blue;
+	text-decoration:underline;
+}
+.led-green {
+    margin: 0 auto;
+    width: 12px;
+    height: 12px;
+    background-color: #ABFF00;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+}
+.led-red {
+    margin: 0 auto;
+    width: 12px;
+    height: 12px;
+    background-color: #FF0000;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+}
+.lightblue {
+	color: #ccccff
+}
+.breakwords {
+	word-wrap: break-word;
+	word-break: break-all;
+}
