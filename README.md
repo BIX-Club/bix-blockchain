@@ -2,7 +2,14 @@
 bix-blockchain
 ==============
 
-BIX blockchain software consists of two layers:
+Essentially distributed and privately owned by governments, authorities, agencies, associations, banking/non-banking financial institutions, business entities, IoT, universities, colleges, schools and other organizations, BIX Blockchain is enabling its members, employees, students using BIX network for business, financial, payment, security, educational, gaming and other purposes.
+
+The canonical Blockchain is stored on “consensus Layer0” servers, where each server has a copy of the whole Blockchain. Initially BIX Blockchain’s main purpose was using it as the decentralized database for record   storage, while   customers   can connect to any of our Core Servers to login. In case of using BIX (Blockchain Information eXchange) API, they can continuously send requests for insertion of the data into the Blockchain,	immediately	followed	by acknowledgement for each request. 
+
+For more information see: [BLOCKCHAIN INFORMATION.docx](https://raw.githubusercontent.com/BIX-Club/bix-blockchain/master/doc/BLOCKCHAIN%20INFORMATION.docx)
+
+
+BIX Blockchain software consists of two layers:
 
 - Layer0 (core) servers are servers responsible for the
 blockchain. They receive messages to be inserted into the blockchain,
