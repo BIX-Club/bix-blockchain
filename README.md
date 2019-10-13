@@ -6,7 +6,7 @@ Essentially distributed and privately owned by governments, authorities, agencie
 
 The canonical Blockchain is stored on “consensus Layer0” servers, where each server has a copy of the whole Blockchain. Initially BIX Blockchain’s main purpose was using it as the decentralized database for record   storage, while   customers   can connect to any of our Core Servers to login. In case of using BIX (Blockchain Information eXchange) API, they can continuously send requests for insertion of the data into the Blockchain,	immediately	followed	by acknowledgement for each request. 
 
-For more information see: [BLOCKCHAIN INFORMATION.docx](https://raw.githubusercontent.com/BIX-Club/bix-blockchain/master/doc/BLOCKCHAIN%20INFORMATION.docx)
+For more information see: [BLOCKCHAIN INFORMATION.pdf](https://raw.githubusercontent.com/BIX-Club/bix-blockchain/master/doc/BLOCKCHAIN%20INFORMATION.pdf)
 
 
 BIX Blockchain software consists of two layers:
