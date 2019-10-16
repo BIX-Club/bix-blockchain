@@ -181,15 +181,27 @@ certificate.
 Business model
 --------------
 
-In accordance with the previous points, the current implementation
-contains a builtin support for insertion of an arbitrary user file
-into the blockchain, performing financial transactions and creation
-and usage of custom new virtual currencies.
 
-The implementation contains support for a business model where owners
-of layer0 servers receive recompensation for offering disk space and
-running the network and users entering information into the blockchain
-pay fees depending on the size and the type of stored information.
+BIX (Blockchain Information eXchange) is a decentralised Blockchain ledger technology with capabilities of:
+
+- being used as secure, decentralised, customisable (B-tree type indexing) for any specific business database;
+- having a pre-built digitally signed by “voting nodes” token used as a “payment” token for securely uploading data (currently10MB size at a time) and stored in a blockchain database;
+- creating electronic units (tokens) that serve different industries, entities, associations, government authorities, financial institutions, gaming industry, universities, colleges, and schools;
+- performing fast (currently a minimum of 1,000 and up to a maximum of 5,000 transactions per second) based on server nodes using standard hardware located within the same network;
+- creating multiple Proof of Work (PoW) tokens using pre-built tokenisation engine with “level of mining difficulty" settings and optional browser-based, pre-built “green mining,” an environmentally-friendly block validation protocol using spare processing power at the hardware level;
+- “green mining” achieves parity by equalising PoW token mining capabilities among block-producing network participants;
+- pre-built KYC and AML readiness modules that can be connected to third-party compliance specialists.
+
+BIX has been derived from FIX (Financial Information eXchange) financial technology (FinTech) standards with the intention of establishing a trustful network consisting of credible business and governmental entities operating in different regions, industries, and areas of society.
+
+The board of BIX Club's global network has initially authorised 39 voting server nodes that participate in BIX Blockchain consensus protocol and represent 39 VIP (Voting Initial Participant) members with the allocation of one node for each VIP member. Each VIP member will delegate a representative to the BIX Club Board of Directors.
+
+There are also:
+- NVP (Non-Voting Participants) members, who do not have nodes and are not participating neither in the consensus algorithm and/or Board of Directors. BIX Club will assist NVP members by developing and improving their operations and allocating independent and customised BIX Blockchain instances to each of them.
+and
+- CP (Consulting Participant), who are Institutional or Individual participants in a product QA testing, legal and/or other activities as experts - enthusiast, supporting industry standards and are subjects for the reward.  
+
+
 
 
 
