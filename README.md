@@ -2,6 +2,12 @@
 bix-blockchain
 ==============
 
+BIX Core incorporates a decentralized, customisable database, with capabilities of performing fast transactions, uploading files, pre-built digitally signed electronic payment token, on a fly PoW token creation capabilities, GDPR compliance, KYC and AML and more.
+-	BIX Blockchain Core software is written in “c”.
+-	This published source code represents the first limited implementation of the BIX consensus and BIX (Blockchain Information eXchange) protocol.
+-	This published open-source implementation of BIX Blockchain database includes consensus Core and browser-based visualization of Core nodes connectivity, latency and messages reflecting block creation and other transactions
+
+
 Essentially distributed and privately owned by governments, authorities, agencies, associations, banking/non-banking financial institutions, business entities, IoT, universities, colleges, schools and other organizations, BIX Blockchain is enabling its members, employees, students using BIX network for business, financial, payment, security, educational, gaming and other purposes.
 
 The canonical Blockchain is stored on “consensus Layer0” servers, where each server has a copy of the whole Blockchain. Initially BIX Blockchain’s main purpose was using it as the decentralized database for record   storage, while   customers   can connect to any of our Core Servers to login. In case of using BIX (Blockchain Information eXchange) API, they can continuously send requests for insertion of the data into the Blockchain,	immediately	followed	by acknowledgement for each request. 
