@@ -1,7 +1,7 @@
 
 bix-blockchain
 ==============
-In-house cryptography-secured decentralized storege facility developed and offered by HUBECN LLC.
+In-house cryptography-secured decentralized storege facility developed and offered by HUBECN LLC (db@hubecn.com)
 
 BIX Blockchain Core incorporates a decentralized, customisable database, with capabilities of performing fast transactions, uploading files, pre-built digitally signed electronic payment token, on a fly PoW token creation capabilities, GDPR compliance, KYC and AML and more.
 -	BIX Blockchain Core software is written in “c”.
